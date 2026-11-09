@@ -5,5 +5,5 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   // Project Pages URL: https://srosenfeld.github.io/tavol-ai-demo/
-  base: process.env.VITE_BASE ?? '/tavol-ai-demo/',
+  base: '/tavol-ai-demo/',
 })
