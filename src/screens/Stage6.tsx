@@ -1,4 +1,5 @@
 import { ArrowRight, Building2, TriangleAlert } from 'lucide-react';
+import { asset } from '../asset';
 import { AppBar, Btn, Chip, HigNote, Progress, Screen, SousBubble, StatusBar, Toggle } from '../components/ui';
 import { useDemo } from '../state/demoStore';
 
@@ -25,7 +26,7 @@ export function OfficeTeamScreen() {
             className="hero"
             style={{
               height: 96,
-              backgroundImage: 'url(/brand/office.jpg)',
+              backgroundImage: `url(${asset('brand/office.jpg')})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}

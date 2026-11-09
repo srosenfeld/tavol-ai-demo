@@ -19,6 +19,7 @@ import {
   Star,
   Timer,
 } from 'lucide-react';
+import { asset } from '../asset';
 import { COVER_COLORS } from '../data/seed';
 import { AppBar, Btn, Chip, FoodThumb, HigNote, Progress, Screen, SousBubble, StatusBar } from '../components/ui';
 import { useDemo } from '../state/demoStore';
@@ -97,7 +98,7 @@ export function BookAddScreen() {
           ))}
         </div>
         <div className="pcard row">
-          <FoodThumb tone="#9A3A62" src="/brand/card.jpg" alt="Recipe card photo" />
+          <FoodThumb tone="#9A3A62" src={asset('brand/card.jpg')} alt="Recipe card photo" />
           <div className="grow">
             <b style={{ fontSize: 15 }}>Grandma&apos;s card, photographed</b>
             <div className="tiny">Handwriting is fine. Stains too.</div>
@@ -162,7 +163,7 @@ export function BookReviewScreen() {
   return (
     <>
       <div className="photo-bleed">
-        <img src="/brand/salsa.jpg" alt="Sunday Sauce" />
+        <img src={asset('brand/salsa.jpg')} alt="Sunday Sauce" />
         <div className="photo-dim" aria-hidden="true" />
         <div className="photo-chrome">
           <StatusBar light />
@@ -302,7 +303,7 @@ export function BookStepsScreen() {
         <div className="pcard" style={{ fontSize: 15 }}>
           <b>2.</b> Fold and stretch the dough 4 times, 10 min apart.
           <div className="step-media">
-            <img src="/brand/knead.jpg" alt="Folding focaccia dough" />
+            <img src={asset('brand/knead.jpg')} alt="Folding focaccia dough" />
             <span className="play">
               <Play size={16} fill="#fff" aria-hidden="true" />
             </span>

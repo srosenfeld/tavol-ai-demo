@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { INTEREST_LABELS, type InterestKey } from '../data/seed';
 import { depthLabel } from '../flow/routePlan';
+import { asset } from '../asset';
 import { AppIcon } from '../components/Logo';
 import { AppBar, Btn, HigNote, Progress, Screen, SousBubble, StatusBar } from '../components/ui';
 import { useDemo } from '../state/demoStore';
@@ -71,7 +72,7 @@ export function WelcomeScreen() {
             className="hero"
             style={{
               height: 96,
-              backgroundImage: 'url(/brand/hero.jpg)',
+              backgroundImage: `url(${asset('brand/hero.jpg')})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}

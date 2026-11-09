@@ -8,6 +8,7 @@ import {
   UserRound,
   Users,
 } from 'lucide-react';
+import { asset } from '../asset';
 import { AppBar, Btn, Chip, Screen, SousBubble, StatusBar } from '../components/ui';
 import { useDemo, type TabId } from '../state/demoStore';
 
@@ -67,7 +68,7 @@ export function HomeScreen() {
               <div
                 className="hero"
                 style={{
-                  backgroundImage: 'url(/brand/party.jpg)',
+                  backgroundImage: `url(${asset('brand/party.jpg')})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   height: 110,
@@ -91,7 +92,7 @@ export function HomeScreen() {
                   ['--tone' as string]: '#C4441F',
                   width: 48,
                   height: 48,
-                  backgroundImage: 'url(/brand/sheetpan.jpg)',
+                  backgroundImage: `url(${asset('brand/sheetpan.jpg')})`,
                   backgroundSize: 'cover',
                 }}
               />
@@ -161,9 +162,9 @@ export function HomeScreen() {
             </div>
             <div className="queue">
               {[
-                ['Sunday Sauce', '/brand/salsa.jpg'],
-                ['Sheet-pan chicken thighs', '/brand/sheetpan.jpg'],
-                ['Rosemary focaccia', '/brand/pasta.jpg'],
+                ['Sunday Sauce', asset('brand/salsa.jpg')],
+                ['Sheet-pan chicken thighs', asset('brand/sheetpan.jpg')],
+                ['Rosemary focaccia', asset('brand/pasta.jpg')],
               ].map(([name, img]) => (
                 <div key={name} className="qitem">
                   <img className="thumb" src={img} alt="" />

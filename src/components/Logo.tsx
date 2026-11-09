@@ -1,3 +1,5 @@
+import { asset } from '../asset';
+
 /** Brand Refresh 2.0 mark — host (Saffron) center, guests left/right with overlap */
 const MARK_PATHS = (
   <>
@@ -42,7 +44,7 @@ export function Lockup({
   className?: string;
   variant?: 'fullcolor' | 'ink';
 }) {
-  const src = variant === 'ink' ? '/brand/lockup-ink.svg' : '/brand/lockup-fullcolor.svg';
+  const src = variant === 'ink' ? asset('brand/lockup-ink.svg') : asset('brand/lockup-fullcolor.svg');
   return (
     <img
       className={className}
@@ -67,7 +69,7 @@ export function AppIcon({ className = 'app-icon-img' }: { className?: string }) 
   return (
     <img
       className={className}
-      src="/brand/icon-default.svg"
+      src={asset('brand/icon-default.svg')}
       alt=""
       width={64}
       height={64}

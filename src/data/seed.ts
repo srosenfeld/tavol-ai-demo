@@ -1,3 +1,5 @@
+import { asset } from '../asset';
+
 export type InterestKey = 'rec' | 'me' | 'grp' | 'party' | 'off';
 export type InterestLevel = 0 | 1 | 2;
 export type MealMode = 0 | 1 | 2 | 3 | 4; // home, else, order_in, eat_out, other
@@ -116,18 +118,18 @@ export interface RecipeCard {
 }
 
 export const IMPORT_QUEUE: RecipeCard[] = [
-  { id: 'sauce', name: 'Sunday Sauce', meta: 'Photo. Handwriting read', tone: '#9A3A62', image: '/brand/salsa.jpg', status: 'ready' },
-  { id: 'chicken', name: 'Sheet-pan chicken', meta: 'nytcooking.com link', tone: '#C4441F', image: '/brand/sheetpan.jpg', status: 'ready' },
-  { id: 'focaccia', name: 'Rosemary focaccia', meta: 'Video. Transcribing steps', tone: '#F0B033', image: '/brand/focaccia.jpg', status: 'importing' },
-  { id: 'paste', name: 'Pasted text', meta: 'Looks like 2 recipes. Splitting', tone: '#3D5A80', image: '/brand/pasta.jpg', status: 'importing' },
+  { id: 'sauce', name: 'Sunday Sauce', meta: 'Photo. Handwriting read', tone: '#9A3A62', image: asset('brand/salsa.jpg'), status: 'ready' },
+  { id: 'chicken', name: 'Sheet-pan chicken', meta: 'nytcooking.com link', tone: '#C4441F', image: asset('brand/sheetpan.jpg'), status: 'ready' },
+  { id: 'focaccia', name: 'Rosemary focaccia', meta: 'Video. Transcribing steps', tone: '#F0B033', image: asset('brand/focaccia.jpg'), status: 'importing' },
+  { id: 'paste', name: 'Pasted text', meta: 'Looks like 2 recipes. Splitting', tone: '#3D5A80', image: asset('brand/pasta.jpg'), status: 'importing' },
 ];
 
 export const SUGGESTED_RECIPES: RecipeCard[] = [
-  { id: 'chicken', name: 'Sheet-pan chicken thighs', meta: 'Dinner. 9 ingredients. 45 min', tone: '#C4441F', image: '/brand/sheetpan.jpg', selected: true },
-  { id: 'tacos', name: 'Tuesday chicken tacos', meta: 'Dinner. 11 ingredients. 30 min', tone: '#F0B033', image: '/brand/tacos.jpg', selected: true },
-  { id: 'sauce', name: 'Sunday Sauce', meta: 'Already in your book', tone: '#9A3A62', image: '/brand/salsa.jpg', status: 'linked', selected: false },
-  { id: 'salmon', name: 'Salmon and rice bowls', meta: 'Dinner. 8 ingredients. 25 min', tone: '#3D5A80', image: '/brand/salmon.jpg', selected: true },
-  { id: 'salad', name: 'Chickpea big salad', meta: 'Lunch. 10 ingredients', tone: '#2F5E3D', image: '/brand/platter.jpg', status: 'new', selected: true },
+  { id: 'chicken', name: 'Sheet-pan chicken thighs', meta: 'Dinner. 9 ingredients. 45 min', tone: '#C4441F', image: asset('brand/sheetpan.jpg'), selected: true },
+  { id: 'tacos', name: 'Tuesday chicken tacos', meta: 'Dinner. 11 ingredients. 30 min', tone: '#F0B033', image: asset('brand/tacos.jpg'), selected: true },
+  { id: 'sauce', name: 'Sunday Sauce', meta: 'Already in your book', tone: '#9A3A62', image: asset('brand/salsa.jpg'), status: 'linked', selected: false },
+  { id: 'salmon', name: 'Salmon and rice bowls', meta: 'Dinner. 8 ingredients. 25 min', tone: '#3D5A80', image: asset('brand/salmon.jpg'), selected: true },
+  { id: 'salad', name: 'Chickpea big salad', meta: 'Lunch. 10 ingredients', tone: '#2F5E3D', image: asset('brand/platter.jpg'), status: 'new', selected: true },
 ];
 
 export const STORES = [
@@ -155,7 +157,7 @@ export const VOTE_OPTIONS = [
     name: 'Sunday Sauce rigatoni',
     meta: 'From Okafor Family Table. Vegetarian. Nut free',
     tone: '#9A3A62',
-    image: '/brand/pasta.jpg',
+    image: asset('brand/pasta.jpg'),
     fits: true,
     price: '$4.10 a plate',
   },
@@ -164,7 +166,7 @@ export const VOTE_OPTIONS = [
     name: 'Miso glazed salmon',
     meta: "From Priya's Plant Kitchen. Shellfish free",
     tone: '#3D5A80',
-    image: '/brand/salmon.jpg',
+    image: asset('brand/salmon.jpg'),
     fits: true,
     price: '$6.20 a plate',
   },
@@ -173,7 +175,7 @@ export const VOTE_OPTIONS = [
     name: 'Build-your-own taco bar',
     meta: 'Mild for kids. Two vegetarian fillings',
     tone: '#F0B033',
-    image: '/brand/tacos.jpg',
+    image: asset('brand/tacos.jpg'),
     fits: true,
     price: '$3.80 a plate',
   },

@@ -18,6 +18,7 @@ import {
   X,
 } from 'lucide-react';
 import { VOTE_OPTIONS } from '../data/seed';
+import { asset } from '../asset';
 import { AppBar, Btn, Chip, HigNote, Screen, SousBubble, StatusBar, Toggle } from '../components/ui';
 import { useDemo } from '../state/demoStore';
 import { WeekGrid } from './Stage4';
@@ -404,7 +405,7 @@ export function SharedLockedScreen() {
             style={{
               ['--tone' as string]: '#9A3A62',
               height: 110,
-              backgroundImage: 'url(/brand/party.jpg)',
+              backgroundImage: `url(${asset('brand/party.jpg')})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
