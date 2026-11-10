@@ -1089,6 +1089,33 @@ img { display: block; max-width: 100%; }
 .hignote svg { flex: none; width: 16px; height: 16px; color: var(--blueberry); margin-top: 1px; }
 .hignote b { color: var(--ink); }
 
+.cobrand-foot {
+  display: grid;
+  place-items: center;
+  padding: 6px 0 2px;
+}
+.kinlith-endorse {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.kinlith-endorse.splash { width: 120px; }
+.kinlith-endorse.pill { width: 168px; }
+.kinlith-endorse.micro { width: 141px; }
+.kinlith-chip { display: block; height: auto; width: 120px; }
+
+.settings-about {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+.cobrand-card {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+
 .fab-sous {
   position: absolute;
   right: 16px;

@@ -25,7 +25,7 @@ import {
 } from '../data/seed';
 import { buildRoutePlan, buildStageMeta, type RouteStep, type ScreenId, type StageMeta } from '../flow/routePlan';
 
-const STORAGE_KEY = 'tavol-demo-v1';
+const STORAGE_KEY = 'tavolio-demo-v1';
 
 export type TabId = 'today' | 'plan' | 'books' | 'table' | 'you';
 

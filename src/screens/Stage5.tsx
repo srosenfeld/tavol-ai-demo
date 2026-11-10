@@ -126,8 +126,8 @@ export function HhInvitesScreen() {
         <div className="lbl">Message preview</div>
         <div className="msg me">
           <div className="bub">
-            {state.firstName} set up our family table on Tavol.ai. Check your food preferences, takes 2 minutes:
-            tavol.ai/j/7Hq2
+            {state.firstName} set up our family table on Tavol.io. Check your food preferences, takes 2 minutes:
+            tavol.io/j/7Hq2
           </div>
         </div>
       </Screen>
@@ -141,7 +141,7 @@ export function HhInviteeScreen() {
     <>
       <StatusBar />
       <div className="web-url">
-        <Lock size={12} /> tavol.ai/j/7Hq2
+        <Lock size={12} /> tavol.io/j/7Hq2
       </div>
       <Screen
         footer={

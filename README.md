@@ -1,6 +1,6 @@
-# Tavol.ai Interactive Journey Demo
+# Tavol.io Interactive Journey Demo
 
-A clickable mobile prototype of the Tavol.ai onboarding and planning journey, based on the Design System 2.2 and User Journey Guide assets.
+A clickable mobile prototype of the Tavol.io onboarding and planning journey, based on Design System 3.0, Brand Refresh 2.0, and the User Journey Guide. Co-branded with Kinlith (“Powered by Kinlith”) on sign-in and settings.
 
 ## Run
 
@@ -17,6 +17,7 @@ Open the local URL Vite prints (usually http://localhost:5173).
 - **Dana Okafor path:** Sign in → About you → Recipe books → Just me → Household → Shared meals (Gather)
 - **Interest branching:** Not for me / Some / Very controls which stages appear and Full vs Quick depth
 - **Office stage:** appears only if Office meals is rated Some or Very
+- **Kinlith endorsement:** splash sign-off on welcome; endorsement pill in You / settings
 - **Mocked Sous:** scripted AI copy and import animation; no real auth, OCR, or MCP APIs
 
 ## Controls

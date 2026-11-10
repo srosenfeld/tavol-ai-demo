@@ -49,7 +49,7 @@ export function Lockup({
     <img
       className={className}
       src={src}
-      alt="Tavol.ai"
+      alt="Tavol.io"
       width={180}
       height={46}
       decoding="async"

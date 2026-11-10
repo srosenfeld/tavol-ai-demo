@@ -18,6 +18,7 @@ import {
 import { INTEREST_LABELS, type InterestKey } from '../data/seed';
 import { depthLabel } from '../flow/routePlan';
 import { asset } from '../asset';
+import { PoweredByKinlith } from '../components/Kinlith';
 import { AppIcon } from '../components/Logo';
 import { AppBar, Btn, HigNote, Progress, Screen, SousBubble, StatusBar } from '../components/ui';
 import { useDemo } from '../state/demoStore';
@@ -54,6 +55,9 @@ export function WelcomeScreen() {
             <button type="button" className="link" onClick={() => goToScreen('login')}>
               I already have an account
             </button>
+            <div className="cobrand-foot">
+              <PoweredByKinlith variant="splash" />
+            </div>
           </>
         }
       >

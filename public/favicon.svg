@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#3F7E54"/>
-      <stop offset="1" stop-color="#214A2E"/>
-    </linearGradient>
-  </defs>
-  <rect width="32" height="32" rx="7.2" fill="url(#g)"/>
-  <g transform="translate(2.27 2.6) scale(.286)">
-    <path fill="#F0B033" d="M39 21A9 9 0 1 0 57 21A9 9 0 1 0 39 21ZM35 56V46.0A13.0 13.0 0 0 1 61 46.0V56Z"/>
-    <path fill="#F7F1E6" fill-opacity=".72" d="M19 25A8 8 0 1 0 35 25A8 8 0 1 0 19 25ZM15 56V48.0A12.0 12.0 0 0 1 39 48.0V56Z"/>
-    <path fill="#F7F1E6" fill-opacity=".72" d="M61 25A8 8 0 1 0 77 25A8 8 0 1 0 61 25ZM57 56V48.0A12.0 12.0 0 0 1 81 48.0V56Z"/>
-    <path fill="#F7F1E6" d="M12.0 52H84.0A6.0 6.0 0 0 1 84.0 64H12.0A6.0 6.0 0 0 1 12.0 52ZM40 62H56V76H40ZM33.0 74H63.0A5.0 5.0 0 0 1 63.0 84H33.0A5.0 5.0 0 0 1 33.0 74Z"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><title>Tavol.io favicon</title><desc>Tavol.io identity · v1.0 · October 2026</desc><rect width="32" height="32" rx="7" fill="#2F5E3D"/><g id="mark" transform="translate(3 2.5) scale(1.625)"><path id="guest-left" fill="#F7F1E6" d="M1 7V4A2 2 0 0 1 5 4V7Z"/><path id="guest-center" fill="#E9A92E" d="M6 7V4A2 2 0 0 1 10 4V7Z"/><path id="guest-right" fill="#F7F1E6" d="M11 7V4A2 2 0 0 1 15 4V7Z"/><path id="table" fill="#F7F1E6" d="M2 8H14A1 1 0 0 1 15 9V9A1 1 0 0 1 14 10H2A1 1 0 0 1 1 9V9A1 1 0 0 1 2 8ZM7 9.5H9V13.5H7ZM5 13H11A1 1 0 0 1 12 14V14A1 1 0 0 1 11 15H5A1 1 0 0 1 4 14V14A1 1 0 0 1 5 13Z"/></g></svg>

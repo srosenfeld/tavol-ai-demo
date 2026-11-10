@@ -9,6 +9,7 @@ import {
   Users,
 } from 'lucide-react';
 import { asset } from '../asset';
+import { PoweredByKinlith } from '../components/Kinlith';
 import { AppBar, Btn, Chip, Screen, SousBubble, StatusBar } from '../components/ui';
 import { useDemo, type TabId } from '../state/demoStore';
 
@@ -246,9 +247,17 @@ export function HomeScreen() {
             <Btn variant="sec" onClick={reset}>
               Reset demo
             </Btn>
-            <p className="tiny" style={{ textAlign: 'center' }}>
-              Tavol.ai journey demo · Design System 3.0 · Brand 2.0. No real accounts or payments.
-            </p>
+            <div className="settings-about">
+              <div className="lbl">About</div>
+              <div className="pcard cobrand-card">
+                <b style={{ fontSize: 15 }}>Tavol.io</b>
+                <div className="tiny">Dinner, decided together.</div>
+                <PoweredByKinlith variant="pill" />
+              </div>
+              <p className="tiny" style={{ textAlign: 'center' }}>
+                Journey demo · Design System 3.0 · Brand 2.0. No real accounts or payments.
+              </p>
+            </div>
           </Screen>
         </>
       ) : null}
