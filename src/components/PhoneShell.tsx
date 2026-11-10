@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
+import { isStageAtOrBefore } from '../flow/routePlan';
 import { Lockup } from './Logo';
 import { useDemo } from '../state/demoStore';
 
 export function DemoChrome({ children }: { children: ReactNode }) {
   const { stages, current, goToStage, reset, state } = useDemo();
-  const visibleStages = stages.filter((s) => s.id <= 7 && s.depth !== 'skip');
+  const visibleStages = stages.filter((s) => s.id !== 8 && s.depth !== 'skip');
 
   return (
     <div className="demo-root">
@@ -15,7 +16,7 @@ export function DemoChrome({ children }: { children: ReactNode }) {
         </div>
         <nav className="stage-stepper" aria-label="Stages">
           {visibleStages.map((s) => {
-            const unlocked = state.setupComplete || s.id <= current.stage;
+            const unlocked = state.setupComplete || isStageAtOrBefore(s.id, current.stage);
             const isCurrent = s.id === current.stage;
             return (
               <button
@@ -25,7 +26,7 @@ export function DemoChrome({ children }: { children: ReactNode }) {
                 disabled={!unlocked}
                 onClick={() => unlocked && goToStage(s.id)}
               >
-                <span className="stage-num">{s.id}</span>
+                <span className="stage-num">{s.label}</span>
                 <span className="stage-name">{s.name}</span>
               </button>
             );

@@ -23,9 +23,17 @@ import {
   type RecipeCard,
   type VoteValue,
 } from '../data/seed';
-import { buildRoutePlan, buildStageMeta, type RouteStep, type ScreenId, type StageMeta } from '../flow/routePlan';
+import {
+  buildRoutePlan,
+  buildStageMeta,
+  type BookPurpose,
+  type RouteStep,
+  type ScreenId,
+  type StageId,
+  type StageMeta,
+} from '../flow/routePlan';
 
-const STORAGE_KEY = 'tavolio-demo-v1';
+const STORAGE_KEY = 'tavolio-demo-v2';
 
 export type TabId = 'today' | 'plan' | 'books' | 'table' | 'you';
 
@@ -35,8 +43,14 @@ interface DemoState {
   email: string;
   interests: Record<InterestKey, InterestLevel>;
   bookTitle: string;
+  bookPurpose: BookPurpose;
+  coverTemplate: string;
   coverColor: string;
+  coverFilter: string;
   dedication: string;
+  backBlurb: string;
+  pageLayout: 'photo-left' | 'full-bleed' | 'card' | 'story';
+  rightsPreset: 'family' | 'credit' | 'remix' | 'reserved';
   titleFont: 'modern' | 'classic' | 'script';
   importItems: RecipeCard[];
   suggestedRecipes: RecipeCard[];
@@ -70,8 +84,14 @@ function initialState(): DemoState {
     email: 'dana.okafor@gmail.com',
     interests: { ...DEFAULT_INTERESTS },
     bookTitle: 'Okafor Family Table',
+    bookPurpose: 'family',
+    coverTemplate: 'heirloom',
     coverColor: 'var(--beet)',
+    coverFilter: 'Golden',
     dedication: 'For Ada, who fed all of us',
+    backBlurb: 'Sixty years of Sunday sauce, jollof and birthday cakes, written down at last.',
+    pageLayout: 'photo-left',
+    rightsPreset: 'remix',
     titleFont: 'classic',
     importItems: IMPORT_QUEUE.map((r) => ({ ...r })),
     suggestedRecipes: SUGGESTED_RECIPES.map((r) => ({ ...r })),
@@ -120,7 +140,7 @@ interface DemoContextValue {
   goNext: () => void;
   goBack: () => void;
   goToScreen: (id: ScreenId) => void;
-  goToStage: (stageId: number) => void;
+  goToStage: (stageId: StageId) => void;
   reset: () => void;
   cycleWeekCell: (index: number) => void;
   toggleStore: (id: string) => void;
@@ -140,7 +160,10 @@ const DemoContext = createContext<DemoContextValue | null>(null);
 export function DemoProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<DemoState>(loadState);
 
-  const route = useMemo(() => buildRoutePlan(state.interests), [state.interests]);
+  const route = useMemo(
+    () => buildRoutePlan(state.interests, state.bookPurpose),
+    [state.interests, state.bookPurpose],
+  );
   const stages = useMemo(() => buildStageMeta(state.interests), [state.interests]);
 
   // Clamp step when route shrinks
@@ -167,7 +190,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
 
   const goNext = useCallback(() => {
     setState((s) => {
-      const r = buildRoutePlan(s.interests);
+      const r = buildRoutePlan(s.interests, s.bookPurpose);
       const next = Math.min(s.stepIndex + 1, r.length - 1);
       const done = r[next]?.id === 'home' || s.setupComplete;
       return { ...s, stepIndex: next, setupComplete: done || r[next]?.stage === 8 };
@@ -176,7 +199,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
 
   const goBack = useCallback(() => {
     setState((s) => {
-      const r = buildRoutePlan(s.interests);
+      const r = buildRoutePlan(s.interests, s.bookPurpose);
       const cur = r[s.stepIndex];
       if (s.setupComplete) {
         const homeIdx = r.findIndex((x) => x.id === 'home');
@@ -195,16 +218,16 @@ export function DemoProvider({ children }: { children: ReactNode }) {
 
   const goToScreen = useCallback((id: ScreenId) => {
     setState((s) => {
-      const r = buildRoutePlan(s.interests);
+      const r = buildRoutePlan(s.interests, s.bookPurpose);
       const idx = r.findIndex((x) => x.id === id);
       if (idx < 0) return s;
       return { ...s, stepIndex: idx, setupComplete: r[idx].stage === 8 || s.setupComplete };
     });
   }, []);
 
-  const goToStage = useCallback((stageId: number) => {
+  const goToStage = useCallback((stageId: StageId) => {
     setState((s) => {
-      const r = buildRoutePlan(s.interests);
+      const r = buildRoutePlan(s.interests, s.bookPurpose);
       const idx = r.findIndex((x) => x.stage === stageId);
       if (idx < 0) return s;
       return { ...s, stepIndex: idx };
@@ -279,7 +302,7 @@ export function DemoProvider({ children }: { children: ReactNode }) {
 
   const finishSetup = useCallback(() => {
     setState((s) => {
-      const r = buildRoutePlan(s.interests);
+      const r = buildRoutePlan(s.interests, s.bookPurpose);
       const homeIdx = r.findIndex((x) => x.id === 'home');
       return { ...s, setupComplete: true, stepIndex: homeIdx >= 0 ? homeIdx : r.length - 1, activeTab: 'today' };
     });

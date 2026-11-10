@@ -301,16 +301,18 @@ export function InterestsScreen() {
 
 export function SetupPlanScreen() {
   const { state, stages, goNext, goBack, goToScreen, progress, finishSetup } = useDemo();
-  const setupStages = stages.filter((s) => s.id >= 3 && s.id <= 7);
+  const setupStages = stages.filter((s) => s.id === 30 || (s.id >= 3 && s.id <= 7));
   const firstActive = setupStages.find((s) => s.depth !== 'skip');
   const startLabel =
     firstActive?.id === 3
       ? 'Start with recipe books'
-      : firstActive?.id === 4
-        ? 'Start with your week'
-        : firstActive
-          ? `Start with ${firstActive.name.toLowerCase()}`
-          : 'Go to home';
+      : firstActive?.id === 30
+        ? 'Start with Book Studio'
+        : firstActive?.id === 4
+          ? 'Start with your week'
+          : firstActive
+            ? `Start with ${firstActive.name.toLowerCase()}`
+            : 'Go to home';
 
   return (
     <>
