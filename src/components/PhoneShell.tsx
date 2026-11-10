@@ -12,7 +12,7 @@ export function DemoChrome({ children }: { children: ReactNode }) {
         <header className="demo-header">
           <div className="demo-brand">
             <Lockup className="lockup-sm" />
-            <small>Journey demo · 3.0</small>
+            <small>Demo · 3.0</small>
           </div>
           <div className="demo-actions">
             <button type="button" className="ghost-btn" onClick={reset}>

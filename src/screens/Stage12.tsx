@@ -37,7 +37,7 @@ export function WelcomeScreen() {
     <>
       <StatusBar />
       <Screen
-        className="center"
+        className="welcome"
         footer={
           <>
             <Btn variant="apple" onClick={() => goToScreen('profile')} aria-label="Continue with Apple">
@@ -61,8 +61,8 @@ export function WelcomeScreen() {
           </>
         }
       >
-        <AppIcon />
-        <h1 className="h">
+        <AppIcon className="app-icon-img welcome-icon" />
+        <h1 className="h welcome-title">
           Dinner,
           <br />
           decided together.
@@ -71,11 +71,10 @@ export function WelcomeScreen() {
         <HigNote title="Familiarity">
           Sign in with Apple comes first, using the system button pattern. No custom login screen to learn.
         </HigNote>
-        <div className="mcard" style={{ marginTop: 4 }}>
+        <div className="mcard welcome-hero">
           <div
             className="hero"
             style={{
-              height: 96,
               backgroundImage: `url(${asset('brand/hero.jpg')})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',

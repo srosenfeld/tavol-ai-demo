@@ -41,10 +41,12 @@ img { display: block; max-width: 100%; }
 
 /* ---------- Outer demo chrome ---------- */
 .demo-root {
+  height: 100dvh;
   min-height: 100dvh;
+  overflow: hidden;
   display: grid;
   place-items: center;
-  padding: 24px 16px 40px;
+  padding: 10px 16px 12px;
   background:
     radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in srgb, var(--saffron) 18%, transparent), transparent),
     radial-gradient(ellipse 60% 40% at 100% 100%, color-mix(in srgb, var(--sorrel) 12%, transparent), transparent),
@@ -52,10 +54,14 @@ img { display: block; max-width: 100%; }
 }
 
 .demo-chrome {
-  width: min(440px, 100%);
-  display: grid;
-  gap: 14px;
-  justify-items: center;
+  width: min(420px, 100%);
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 0;
 }
 
 .demo-header {
@@ -63,28 +69,31 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
+  min-height: 0;
 }
 .demo-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  min-width: 0;
 }
-.demo-brand img.lockup-sm { width: 148px; height: auto; }
+.demo-brand img.lockup-sm { width: 118px; height: auto; }
 .demo-brand small {
-  font-size: max(11px, var(--text-min));
+  font-size: max(10px, var(--text-min));
   font-weight: 600;
   color: var(--ink-2);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
-.demo-actions { display: flex; gap: 8px; align-items: center; }
+.demo-actions { display: flex; gap: 8px; align-items: center; flex: none; }
 .ghost-btn {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink-2);
-  padding: 10px 14px;
-  min-height: var(--tap-min);
+  padding: 6px 12px;
+  min-height: 32px;
   border-radius: var(--r-pill);
   border: 1px solid var(--line);
   background: var(--paper);
@@ -95,19 +104,26 @@ img { display: block; max-width: 100%; }
 .stage-stepper {
   display: flex;
   gap: 6px;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 4px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
 }
 .stage-dot {
-  font-size: max(11px, var(--text-min));
+  font-size: 11px;
   font-weight: 600;
-  padding: 10px 12px;
-  min-height: var(--tap-min);
+  padding: 5px 10px;
+  min-height: 28px;
   border-radius: var(--r-pill);
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink-3);
+  white-space: nowrap;
+  flex: none;
 }
 .stage-dot.on { background: var(--sorrel); color: var(--oat); border-color: var(--sorrel); }
 .stage-dot.current { box-shadow: 0 0 0 2px var(--saffron); }
@@ -115,22 +131,28 @@ img { display: block; max-width: 100%; }
 
 /* ---------- Phone shell ---------- */
 .phone-shell {
-  width: min(var(--phone-w), 100%);
-  height: min(var(--phone-h), calc(100dvh - 140px));
+  /* Fill leftover chrome height, then derive width from iPhone aspect */
+  flex: 1 1 0;
+  min-height: 0;
+  height: 0;
+  width: auto;
+  max-width: min(var(--phone-w), 100%);
+  aspect-ratio: 390 / 844;
   background: var(--cast-iron);
   border-radius: 42px;
-  padding: 12px;
+  padding: 11px;
   box-shadow: var(--e3), 0 0 0 1px rgba(0,0,0,0.2);
   position: relative;
+  align-self: center;
 }
 .phone-shell::before {
   content: "";
   position: absolute;
-  top: 18px;
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  width: 110px;
-  height: 28px;
+  width: 96px;
+  height: 24px;
   background: #0a0908;
   border-radius: 20px;
   z-index: 5;
@@ -146,19 +168,31 @@ img { display: block; max-width: 100%; }
   position: relative;
 }
 
-@media (max-width: 640px) {
+/* True phone-sized viewports: full-bleed app UI */
+@media (max-width: 520px) and (max-aspect-ratio: 10/16) {
   .demo-root { padding: 0; background: var(--oat); place-items: stretch; }
-  .demo-chrome { width: 100%; gap: 0; }
+  .demo-chrome {
+    width: 100%;
+    gap: 0;
+  }
   .demo-header, .stage-stepper { display: none; }
   .phone-shell {
+    flex: 1 1 auto;
     width: 100%;
-    height: 100dvh;
+    height: auto;
+    max-width: none;
+    aspect-ratio: auto;
     border-radius: 0;
     padding: 0;
     box-shadow: none;
   }
   .phone-shell::before { display: none; }
   .phone-screen { border-radius: 0; }
+}
+
+/* Narrow desktop panes: keep phone proportions, hide chrome */
+@media (max-width: 720px) and (min-aspect-ratio: 10/16) {
+  .demo-header, .stage-stepper { display: none; }
 }
 
 /* ---------- Screen chrome ---------- */
@@ -237,24 +271,26 @@ img { display: block; max-width: 100%; }
 
 .scr-body {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
-  padding: 8px var(--screen-margin) 24px;
+  padding: 6px var(--screen-margin) 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   -webkit-overflow-scrolling: touch;
 }
 .scr-body.center {
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 4px;
 }
 .scr-body.has-tab {
   padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
 }
 .scr-foot {
   flex: none;
-  padding: 10px var(--screen-margin) calc(14px + env(safe-area-inset-bottom, 0px));
+  padding: 8px var(--screen-margin) calc(12px + env(safe-area-inset-bottom, 0px));
   display: grid;
-  gap: 8px;
+  gap: 6px;
   background: linear-gradient(to top, var(--oat) 70%, transparent);
   border-top: 1px solid transparent;
 }
@@ -1069,10 +1105,40 @@ img { display: block; max-width: 100%; }
 .mark-hero { width: 84px; height: 72px; }
 .lockup-sm { width: 160px; height: auto; }
 .app-icon-img {
-  width: 72px;
-  height: 72px;
-  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  border-radius: 15px;
   box-shadow: var(--e2);
+}
+.scr-body.welcome {
+  gap: 8px;
+  padding-top: 2px;
+  padding-bottom: 8px;
+}
+.welcome-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 13px;
+}
+.welcome-title {
+  font-size: clamp(1.45rem, 1.2rem + 1.2vw, 1.75rem);
+  line-height: 1.12;
+}
+.welcome-hero .hero {
+  height: 72px;
+}
+.scr-body.welcome .hignote {
+  padding: 8px 10px;
+  font-size: 12px;
+}
+.scr-body.welcome + .scr-foot,
+.phone-screen:has(.welcome) .scr-foot {
+  gap: 6px;
+  padding-top: 6px;
+}
+.phone-screen:has(.welcome) .btn {
+  min-height: 48px;
+  height: 48px;
 }
 
 .hignote {
