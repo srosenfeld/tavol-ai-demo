@@ -176,12 +176,18 @@ export function DemoProvider({ children }: { children: ReactNode }) {
 
   const goBack = useCallback(() => {
     setState((s) => {
+      const r = buildRoutePlan(s.interests);
+      const cur = r[s.stepIndex];
       if (s.setupComplete) {
-        const r = buildRoutePlan(s.interests);
         const homeIdx = r.findIndex((x) => x.id === 'home');
-        if (homeIdx >= 0 && r[s.stepIndex]?.id !== 'home') {
+        if (homeIdx >= 0 && cur?.id !== 'home') {
           return { ...s, stepIndex: homeIdx, activeTab: 'today' };
         }
+      }
+      // signup/login are alternate forks after welcome — never step back into them
+      if (cur?.id === 'profile' || cur?.id === 'login' || cur?.id === 'signup') {
+        const welcomeIdx = r.findIndex((x) => x.id === 'welcome');
+        if (welcomeIdx >= 0) return { ...s, stepIndex: welcomeIdx };
       }
       return { ...s, stepIndex: Math.max(0, s.stepIndex - 1) };
     });

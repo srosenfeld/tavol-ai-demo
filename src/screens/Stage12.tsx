@@ -195,12 +195,12 @@ export function LoginScreen() {
 }
 
 export function ProfileScreen() {
-  const { state, setField, goNext, goBack, progress } = useDemo();
+  const { state, setField, goNext, goToScreen, progress } = useDemo();
   const canContinue = state.firstName.trim().length > 0;
   return (
     <>
       <StatusBar />
-      <AppBar onBack={goBack} />
+      <AppBar onBack={() => goToScreen('welcome')} />
       <Progress value={progress} />
       <Screen
         footer={

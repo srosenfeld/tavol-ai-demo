@@ -8,19 +8,12 @@ export function DemoChrome({ children }: { children: ReactNode }) {
 
   return (
     <div className="demo-root">
-      <div className="demo-chrome">
-        <header className="demo-header">
-          <div className="demo-brand">
-            <Lockup className="lockup-sm" />
-            <small>Demo · 3.0</small>
-          </div>
-          <div className="demo-actions">
-            <button type="button" className="ghost-btn" onClick={reset}>
-              Reset
-            </button>
-          </div>
-        </header>
-        <div className="stage-stepper" role="navigation" aria-label="Stages">
+      <aside className="demo-sidebar">
+        <div className="demo-brand">
+          <Lockup className="lockup-sm" />
+          <small>Demo · 3.0</small>
+        </div>
+        <nav className="stage-stepper" aria-label="Stages">
           {visibleStages.map((s) => {
             const unlocked = state.setupComplete || s.id <= current.stage;
             const isCurrent = s.id === current.stage;
@@ -32,11 +25,18 @@ export function DemoChrome({ children }: { children: ReactNode }) {
                 disabled={!unlocked}
                 onClick={() => unlocked && goToStage(s.id)}
               >
-                {s.id}. {s.name}
+                <span className="stage-num">{s.id}</span>
+                <span className="stage-name">{s.name}</span>
               </button>
             );
           })}
-        </div>
+        </nav>
+        <button type="button" className="ghost-btn sidebar-reset" onClick={reset}>
+          Reset demo
+        </button>
+      </aside>
+
+      <div className="demo-stage">
         <div className="phone-shell">
           <div className="phone-screen">{children}</div>
         </div>
