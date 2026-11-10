@@ -4,6 +4,6 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Project Pages URL: https://srosenfeld.github.io/tavol-ai-demo/
-  base: '/tavol-ai-demo/',
+  // Production: https://tavol.io (Cloudflare Pages)
+  base: '/',
 })
